@@ -59,6 +59,7 @@ struct SettingsView: View {
                                     .padding(.vertical, 12)
                                     .frame(maxWidth: .infinity)
                                     .background(selectedLanguageCode == language.rawValue ? bgColor : panelColor)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 10)
                                             .stroke(borderColor.opacity(0.25), lineWidth: 1)
@@ -88,6 +89,7 @@ struct SettingsView: View {
                             .padding(.vertical, 12)
                             .frame(maxWidth: .infinity)
                             .background(bgColor)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(borderColor.opacity(0.25), lineWidth: 1)
@@ -107,6 +109,7 @@ struct SettingsView: View {
                                 .padding(.vertical, 12)
                                 .frame(maxWidth: .infinity)
                                 .background(bgColor)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(borderColor.opacity(0.25), lineWidth: 1)

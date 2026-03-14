@@ -15,7 +15,8 @@ struct ContentView: View {
     private let lastPomodoroDateKey = "lastPomodoroDate"
     private let selectedPomodoroMinutesKey = "selectedPomodoroMinutes"
     private let sadCatNotificationIdentifier = "sadCatReminder"
-    
+    private let inactivityInterval: TimeInterval = 7 * 24 * 60 * 60
+    //private let inactivityInterval: TimeInterval = 30
     private let availableDurations = [1, 25, 50]
     
     @AppStorage("selectedLanguageCode") private var selectedLanguageCode = AppLanguage.system.rawValue
@@ -336,8 +337,7 @@ struct ContentView: View {
             return
         }
         
-        let sevenDaysAgo = Date().addingTimeInterval(-7 * 24 * 60 * 60)
-        hasBeenInactiveForAWeek = lastPomodoroDate < sevenDaysAgo
+        hasBeenInactiveForAWeek = Date().timeIntervalSince(lastPomodoroDate) >= inactivityInterval
     }
     
     func clearWeeklyPomodoros() {
@@ -386,10 +386,11 @@ struct ContentView: View {
         content.body = localized("notification_sad_body", languageCode: selectedLanguageCode)
         content.sound = .default
         
-        let triggerDate = Calendar.current.date(byAdding: .day, value: 7, to: date) ?? date.addingTimeInterval(7 * 24 * 60 * 60)
-        let timeInterval = max(triggerDate.timeIntervalSinceNow, 5)
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: max(inactivityInterval, 5),
+            repeats: false
+        )
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
         let request = UNNotificationRequest(
             identifier: sadCatNotificationIdentifier,
             content: content,
@@ -398,7 +399,9 @@ struct ContentView: View {
         
         center.add(request)
     }
+    
 }
+
 
 #Preview {
     ContentView()
