@@ -18,6 +18,7 @@ struct ContentView: View {
     private let selectedPomodoroMinutesKey = "selectedPomodoroMinutes"
     private let sadCatNotificationIdentifier = "sadCatReminder"
     private let inactivityInterval: TimeInterval = 7 * 24 * 60 * 60
+    //private let inactivityInterval: TimeInterval = 30
     private let availableDurations = [10, 25, 50]
     
     @AppStorage("selectedLanguageCode") private var selectedLanguageCode = AppLanguage.system.rawValue
