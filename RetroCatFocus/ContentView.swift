@@ -5,9 +5,11 @@
 //  Created by Ismael Martinez Mohamed on 7/3/26.
 //
 
+
 import SwiftUI
 import Combine
 import UserNotifications
+import UIKit
 
 struct ContentView: View {
     private let weeklyPomodorosKey = "weeklyPomodoros"
@@ -16,7 +18,6 @@ struct ContentView: View {
     private let selectedPomodoroMinutesKey = "selectedPomodoroMinutes"
     private let sadCatNotificationIdentifier = "sadCatReminder"
     private let inactivityInterval: TimeInterval = 7 * 24 * 60 * 60
-    //private let inactivityInterval: TimeInterval = 30
     private let availableDurations = [10, 25, 50]
     
     @AppStorage("selectedLanguageCode") private var selectedLanguageCode = AppLanguage.system.rawValue
@@ -24,6 +25,8 @@ struct ContentView: View {
     @State private var selectedPomodoroMinutes: Int = 25
     @State private var timeRemaining: Int = 25 * 60
     @State private var timerIsRunning: Bool = false
+    @State private var timerEndDate: Date? = nil
+    
     @State private var weeklyPomodoros: Int = 0
     @State private var currentCatFrame: Int = 0
     @State private var hasBeenInactiveForAWeek: Bool = false
@@ -173,15 +176,12 @@ struct ContentView: View {
             loadWeeklyData()
             checkForNewWeek()
             checkInactivityStatus()
+            updateTimerFromEndDate()
+            updateIdleTimerState()
         }
         .onReceive(timer) { _ in
             guard timerIsRunning else { return }
-            
-            if timeRemaining > 0 {
-                timeRemaining -= 1
-            } else {
-                completePomodoro()
-            }
+            updateTimerFromEndDate()
         }
         .onReceive(catAnimationTimer) { _ in
             currentCatFrame = (currentCatFrame + 1) % currentCatFrames.count
@@ -192,6 +192,7 @@ struct ContentView: View {
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .active {
                 checkInactivityStatus()
+                updateTimerFromEndDate()
             }
         }
         .onChange(of: currentCatMood) { _, _ in
@@ -275,27 +276,66 @@ struct ContentView: View {
     }
     
     func handleStartPauseTapped() {
-        if timeRemaining == 0 {
+        if timerIsRunning {
+            pauseTimer()
+        } else {
+            startTimer()
+        }
+    }
+    
+    func startTimer() {
+        if timeRemaining <= 0 {
             timeRemaining = pomodoroDuration
         }
         
-        timerIsRunning.toggle()
+        timerEndDate = Date().addingTimeInterval(TimeInterval(timeRemaining))
+        timerIsRunning = true
+        updateIdleTimerState()
+    }
+    
+    func pauseTimer() {
+        updateTimerFromEndDate()
+        timerEndDate = nil
+        timerIsRunning = false
+        updateIdleTimerState()
     }
     
     func resetTimer() {
         timeRemaining = pomodoroDuration
         timerIsRunning = false
+        timerEndDate = nil
+        updateIdleTimerState()
     }
     
     func resetTimerForSelectedDuration() {
         timeRemaining = pomodoroDuration
         timerIsRunning = false
+        timerEndDate = nil
+        updateIdleTimerState()
+    }
+    
+    func updateTimerFromEndDate() {
+        guard timerIsRunning, let timerEndDate else { return }
+        
+        let remaining = Int(ceil(timerEndDate.timeIntervalSinceNow))
+        
+        if remaining > 0 {
+            timeRemaining = remaining
+        } else {
+            completePomodoro()
+        }
+    }
+    
+    func updateIdleTimerState() {
+        UIApplication.shared.isIdleTimerDisabled = timerIsRunning
     }
     
     func completePomodoro() {
         weeklyPomodoros += 1
         timerIsRunning = false
+        timerEndDate = nil
         timeRemaining = pomodoroDuration
+        updateIdleTimerState()
         
         let now = Date()
         saveWeeklyData(lastPomodoroDate: now)
@@ -345,6 +385,8 @@ struct ContentView: View {
         hasBeenInactiveForAWeek = false
         timeRemaining = pomodoroDuration
         timerIsRunning = false
+        timerEndDate = nil
+        updateIdleTimerState()
         
         UserDefaults.standard.removeObject(forKey: weeklyPomodorosKey)
         UserDefaults.standard.removeObject(forKey: lastActiveDateKey)
@@ -399,9 +441,7 @@ struct ContentView: View {
         
         center.add(request)
     }
-    
 }
-
 
 #Preview {
     ContentView()
