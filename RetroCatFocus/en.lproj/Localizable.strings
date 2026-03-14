@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  RetroCatFocus
+
+  Created by Ismael Martinez Mohamed on 12/3/26.
+  
+*/
+
+"app_title" = "RETROCAT FOCUS";
+"duration_label" = "Duration";
+"button_start" = "START";
+"button_pause" = "PAUSE";
+"button_reset" = "RESET";
+
+"weekly_title" = "WEEKLY";
+"mood_title" = "MOOD";
+"weekly_value_format" = "%d POMODOROS";
+
+"mood_sad" = "Your cat misses you :(";
+"mood_normal" = "Your cat needs a little focus *.*";
+"mood_happy" = "Your cat is happy :)";
+"mood_very_happy" = "Your cat is super proud <3";
+
+"settings_title" = "Settings";
+"settings_section_language" = "Language";
+"settings_section_support" = "Support";
+"settings_section_development" = "Development";
+"settings_send_email" = "Send email";
+"settings_clear_progress" = "Clear progress";
+
+"language_system" = "System";
+
+"support_email_subject" = "RetroCat Focus Support";
+"support_email_body" = "Hi, I need help with the app.";
+
+"notification_sad_title" = "Your cat misses you";
+"notification_sad_body" = "You haven't completed any pomodoros in a week. Come back and take care of it.";

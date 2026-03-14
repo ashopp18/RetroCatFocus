@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>Spanish</string>
+		<string>ja</string>
+		<string>ko</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>VCR_OSD_MONO_1.001 2.ttf</string>
+	</array>
+</dict>
+</plist>

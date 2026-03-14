@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  RetroCatFocus
+
+  Created by Ismael Martinez Mohamed on 12/3/26.
+  
+*/
+
+"app_title" = "RETROCAT FOCUS";
+"duration_label" = "시간";
+"button_start" = "START";
+"button_pause" = "PAUSE";
+"button_reset" = "RESET";
+
+"weekly_title" = "WEEKLY";
+"mood_title" = "MOOD";
+"weekly_value_format" = "포모도로 %d회";
+
+"mood_sad" = "고양이가 당신을 그리워해요 :(";
+"mood_normal" = "고양이가 조금 더 집중하길 바라고 있어요 *.*";
+"mood_happy" = "고양이가 기뻐하고 있어요 :)";
+"mood_very_happy" = "고양이가 정말 자랑스러워해요 <3";
+
+"settings_title" = "설정";
+"settings_section_language" = "언어";
+"settings_section_support" = "지원";
+"settings_section_development" = "개발";
+"settings_send_email" = "이메일 보내기";
+"settings_clear_progress" = "진행 상황 지우기";
+
+"language_system" = "시스템";
+
+"support_email_subject" = "RetroCat Focus 지원";
+"support_email_body" = "안녕하세요, 앱에 대한 도움이 필요합니다.";
+
+"notification_sad_title" = "고양이가 당신을 그리워해요";
+"notification_sad_body" = "일주일 동안 포모도로를 완료하지 않았어요. 돌아와서 돌봐주세요.";

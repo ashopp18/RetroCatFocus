@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  RetroCatFocus
+
+  Created by Ismael Martinez Mohamed on 12/3/26.
+  
+*/
+
+"app_title" = "RETROCAT FOCUS";
+"duration_label" = "Duración";
+"button_start" = "START";
+"button_pause" = "PAUSE";
+"button_reset" = "RESET";
+
+"weekly_title" = "WEEKLY";
+"mood_title" = "MOOD";
+"weekly_value_format" = "%d POMODOROS";
+
+"mood_sad" = "Tu gato te echa de menos :(";
+"mood_normal" = "Tu gato necesita un poco de foco *.*";
+"mood_happy" = "Tu gato está contento :)";
+"mood_very_happy" = "Tu gato está orgullosísimo <3";
+
+"settings_title" = "Ajustes";
+"settings_section_language" = "Idioma";
+"settings_section_support" = "Soporte";
+"settings_section_development" = "Desarrollo";
+"settings_send_email" = "Enviar email";
+"settings_clear_progress" = "Borrar progreso";
+
+"language_system" = "Sistema";
+
+"support_email_subject" = "Soporte RetroCat Focus";
+"support_email_body" = "Hola, necesito ayuda con la app.";
+
+"notification_sad_title" = "Tu gato te echa de menos";
+"notification_sad_body" = "Llevas una semana sin completar pomodoros. Vuelve a cuidarlo.";

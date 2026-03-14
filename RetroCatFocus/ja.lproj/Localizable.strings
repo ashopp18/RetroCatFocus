@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  RetroCatFocus
+
+  Created by Ismael Martinez Mohamed on 12/3/26.
+  
+*/
+
+"app_title" = "RETROCAT FOCUS";
+"duration_label" = "時間";
+"button_start" = "START";
+"button_pause" = "PAUSE";
+"button_reset" = "RESET";
+
+"weekly_title" = "WEEKLY";
+"mood_title" = "MOOD";
+"weekly_value_format" = "ポモドーロ %d回";
+
+"mood_sad" = "あなたの猫はさみしがっています :(";
+"mood_normal" = "あなたの猫は少し集中してほしいみたい *.*";
+"mood_happy" = "あなたの猫はうれしいです :)";
+"mood_very_happy" = "あなたの猫はとても誇らしげです <3";
+
+"settings_title" = "設定";
+"settings_section_language" = "言語";
+"settings_section_support" = "サポート";
+"settings_section_development" = "開発";
+"settings_send_email" = "メールを送る";
+"settings_clear_progress" = "進捗を消去";
+
+"language_system" = "システム";
+
+"support_email_subject" = "RetroCat Focus サポート";
+"support_email_body" = "こんにちは、アプリについてサポートが必要です。";
+
+"notification_sad_title" = "あなたの猫はさみしがっています";
+"notification_sad_body" = "1週間ポモドーロを完了していません。戻ってきてお世話してあげてください。";
